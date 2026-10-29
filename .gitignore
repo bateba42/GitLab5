@@ -1,0 +1,7 @@
+*.o
+*.exe
+bin/
+obj/
+*.depend
+*.layout
+history.txt
