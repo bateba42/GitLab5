@@ -1,0 +1,47 @@
+#include "operations.h"
+#include <math.h>
+
+double plus(double a, double b) {
+    return a + b;
+}
+
+double minus(double a, double b) {
+    return a - b;
+}
+
+double ymnozenie(double a, double b) {
+    return a * b;
+}
+
+//деление
+double delenie(double a, double b, int* ok) {
+    if (b == 0) {
+        *ok = 0;
+        return 0;
+    }
+    *ok = 1;
+    return a / b;
+}
+
+//cтепень
+double stepen(double a, double b, int* ok) {
+    double r = pow(a, b);
+    if (isnan(r) || isinf(r)) { //не число или бесконечно большое
+        *ok = 0;
+        return 0;
+    }
+    *ok = 1;
+    return r;
+}
+//выбор
+double calculate(double a, double b, char op, int* ok) {
+    *ok = 1;
+    switch (op) {
+        case '+': return plus(a, b);
+        case '-': return minus(a, b);
+        case '*': return ymnozenie(a, b);
+        case '/': return delenie(a, b, ok);
+        case '^': return stepen(a, b, ok);
+        default:  *ok = 0; return 0;
+    }
+}
